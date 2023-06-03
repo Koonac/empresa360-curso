@@ -1,9 +1,10 @@
 <template>
-	<router-view />
+	<div>
+		<h5>Contratos</h5>
+	</div>
 </template>
-
 <script>
 	export default {
-		name: "App",
+		name: "Contratos",
 	};
 </script>
