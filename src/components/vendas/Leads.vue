@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<mensagem-retorno />
 		<h5>Leads</h5>
 		<table class="table table-hover">
 			<thead>
@@ -20,6 +21,13 @@
 						>
 							<i class="bi bi-pencil"></i>
 						</router-link>
+						<button
+							type="button"
+							class="btn btn-sm btn-danger ms-2"
+							@click="deleteDadosApi('http://localhost:3000/leads', d['id'])"
+						>
+							<i class="bi bi-trash"></i>
+						</button>
 					</td>
 				</tr>
 			</tbody>
@@ -27,22 +35,16 @@
 	</div>
 </template>
 <script>
+	import MensagemRetorno from "@/components/notificacoes/MensagemRetorno.vue";
+	import ApiMixin from "@/components/mixins/ApiMixin";
 	export default {
 		name: "Leads",
-		data: () => ({
-			dados: [],
-		}),
-		methods: {
-			getDadosApi() {
-				fetch("http://localhost:3000/leads")
-					.then((response) => response.json())
-					.then((response) => {
-						this.dados = response;
-					});
-			},
+		components: {
+			MensagemRetorno,
 		},
+		mixins: [ApiMixin],
 		created() {
-			this.getDadosApi();
+			this.getDadosApi("http://localhost:3000/leads");
 		},
 	};
 </script>
