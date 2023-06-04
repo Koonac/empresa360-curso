@@ -1,7 +1,17 @@
 <template>
 	<div>
 		<mensagem-retorno />
-		<h5>Leads</h5>
+		<div class="row py-2">
+			<div class="col-8">
+				<h5>Leads</h5>
+			</div>
+			<div class="col-4 text-end">
+				<router-link class="btn btn-success" to="/home/vendas/leads/create">
+					<i class="bi bi-plus-lg"></i>
+					Novo registro
+				</router-link>
+			</div>
+		</div>
 		<table class="table table-hover">
 			<thead>
 				<th scope="col"></th>
@@ -10,13 +20,13 @@
 				<th scope="col"></th>
 			</thead>
 			<tbody>
-				<tr v-for="d in dados" :key="d['id']">
-					<td>{{ d["id"] }}</td>
-					<td>{{ d["nome"] }}</td>
-					<td>{{ d["telefone"] }}</td>
+				<tr v-for="d in dados" :key="d.id">
+					<td>{{ d.id }}</td>
+					<td>{{ d.nome }}</td>
+					<td>{{ d.telefone }}</td>
 					<td>
 						<router-link
-							:to="`/home/vendas/leads/${d['id']}`"
+							:to="{ name: 'editarLead', params: { id: d.id } }"
 							class="btn btn-sm btn-warning"
 						>
 							<i class="bi bi-pencil"></i>

@@ -22,6 +22,37 @@ export default {
 					this.dados = response;
 				});
 		},
+		insertDadosApi(urlApi, dados) {
+			/* GERANDO ID ALEATÓRIO */
+			dados.id = parseInt(Math.random() * 99999);
+
+			// eslint-disable-next-line no-unreachable
+			fetch(urlApi, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(dados),
+			})
+				.then((response) => response.json())
+				.then(() => {
+					// this.$router.push(`/home/vendas/leads/${dados.id}`);
+					this.$router.push({ name: "editarLead", params: { id: dados.id } });
+
+					this.mensagemRetornoApi(
+						"SUCESSO",
+						"Registro inserido com sucesso.",
+						""
+					);
+				})
+				.catch((error) => {
+					this.mensagemRetornoApi(
+						"ERRO",
+						"Ocorreu um erro ao inserir registro.",
+						JSON.stringify(error)
+					);
+				});
+		},
 		updateDadosApi(urlApi, dados) {
 			fetch(urlApi, {
 				method: "PUT",

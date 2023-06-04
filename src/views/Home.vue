@@ -2,11 +2,15 @@
 	<div>
 		<nav class="navbar navbar-light bg-light menu-superior">
 			<div class="container">
-				<router-link class="navbar-brand" to="/home">Empresa 360</router-link>
+				<router-link class="navbar-brand" :to="{ name: 'home' }"
+					>Empresa 360</router-link
+				>
 				<div class="navbar-nav">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<router-link to="/" class="nav-link">Sair</router-link>
+							<router-link :to="{ name: 'site' }" class="nav-link"
+								>Sair</router-link
+							>
 						</li>
 					</ul>
 				</div>
@@ -17,7 +21,7 @@
 			<div class="list-group menu-esquerda">
 				<router-link
 					class="list-group-item list-group-item-action"
-					to="/home/dashboard"
+					:to="{ name: 'dashboard' }"
 					exact-active-class="active"
 				>
 					<i class="bi bi-speedometer2"></i>
@@ -25,7 +29,7 @@
 				</router-link>
 				<router-link
 					class="list-group-item list-group-item-action"
-					to="/home/vendas"
+					:to="{ name: 'vendas' }"
 					exact-active-class="active"
 				>
 					<i class="bi bi-cart"></i>
@@ -34,7 +38,7 @@
 				<div class="ps-4">
 					<router-link
 						class="list-group-item list-group-item-action"
-						to="/home/vendas/leads"
+						:to="{ name: 'leads' }"
 						exact-active-class="active"
 					>
 						<i class="bi bi-arrow-right"></i>
@@ -42,7 +46,7 @@
 					</router-link>
 					<router-link
 						class="list-group-item list-group-item-action"
-						to="/home/vendas/contratos"
+						:to="{ name: 'contratos' }"
 						exact-active-class="active"
 					>
 						<i class="bi bi-arrow-right"></i>
@@ -51,8 +55,8 @@
 				</div>
 				<router-link
 					class="list-group-item list-group-item-action"
-					to="/home/servicos"
-					exact-active-class="active"
+					:to="{ name: 'servicos' }"
+					active-class="active"
 				>
 					<i class="bi bi-card-checklist"></i>
 					Serviços
@@ -72,6 +76,9 @@
 				</div>
 			</div>
 		</div>
+		<div class="rodape">
+			<router-view name="rodape" />
+		</div>
 	</div>
 </template>
 
@@ -88,6 +95,14 @@
 	.list-group-item {
 		border-top: none;
 		border-right: none;
+	}
+	.rodape {
+		position: fixed;
+		text-align: center;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		background-color: #ccc;
 	}
 	/* .router-link-exact-active {
 		color: #ffff;
