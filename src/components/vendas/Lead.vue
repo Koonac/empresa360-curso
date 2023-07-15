@@ -59,15 +59,14 @@
 	export default {
 		name: "Lead",
 		mixins: [ApiMixin],
+		props: ["id"],
 		components: {
 			MensagemRetorno,
 		},
 		data: () => ({}),
 		created() {
-			if (this.$route.params.id) {
-				this.getDadosApi(
-					`http://localhost:3000/leads/${this.$route.params.id}`
-				);
+			if (this.id) {
+				this.getDadosApi(`http://localhost:3000/leads/${this.id}`);
 			}
 		},
 	};

@@ -14,10 +14,10 @@
 		</div>
 		<table class="table table-hover">
 			<thead>
-				<th scope="col"></th>
-				<th scope="col"></th>
-				<th scope="col"></th>
-				<th scope="col"></th>
+				<th scope="col">#</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Telefone</th>
+				<th scope="col">Ações</th>
 			</thead>
 			<tbody>
 				<tr v-for="d in dados" :key="d.id">
